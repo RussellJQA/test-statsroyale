@@ -1,15 +1,16 @@
 from enum import Enum
 
-import pytest
+# pip installed
+import pytest  # installed with webdriver_manager
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from webdriver_manager.chrome import ChromeDriverManager
 
 Driver = Enum('Driver', 'CHROME FIREFOX')
 
 
-def goto_statsroyale_cards(browser=Driver.CHROME):
-    driver = webdriver.Chrome() if (browser
-                                    == Driver.CHROME) else webdriver.Firefox()
+def goto_statsroyale_cards():
+    driver = webdriver.Chrome(ChromeDriverManager().install())
 
     # I added, because otherwise "Cards" link doesn't show on my PC
     driver.maximize_window()
@@ -31,7 +32,7 @@ def test_ice_spirit_is_displayed():
     # I added, because otherwise this intermittently fails
     driver.implicitly_wait(10)
 
-    # Aassert "Ice Spirit" card is displayed
+    # Assert "Ice Spirit" card is displayed
     card = driver.find_element(By.CSS_SELECTOR, "[href*='Ice+Spirit']")
     assert card.is_displayed()
 
@@ -40,7 +41,7 @@ def test_ice_spirit_is_displayed():
 
 # CHALLENGE 1 - Write another test that asserts that "Lava Golem" is displayed.
 # Currently, though, there no longer is a "Lava Golem" card.
-# So, test for the "Golem" card (which does currently exists) instead.
+# So, test for the "Golem" card (which does currently exist) instead.
 @pytest.mark.flaky(reruns=2, reruns_delay=5)
 def test_golem_is_displayed():
     # Go to statsroyale.com's Cards page

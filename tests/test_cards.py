@@ -1,4 +1,5 @@
-import pytest
+# pip installed
+import pytest  # installed with webdriver_manager
 import pytest_check as check
 
 from royale.pages.cards_page import CardsPage

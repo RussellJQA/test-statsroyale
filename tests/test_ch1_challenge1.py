@@ -1,4 +1,5 @@
-import pytest
+# pip installed
+import pytest  # installed with webdriver_manager
 
 
 def vowel_count(string: str) -> int:  # I refactored
@@ -41,7 +42,8 @@ def test_with_integer_input():
         vowel_count(7)
 
 
-# I also added a 4th test which currently fails.
+# I also added a 4th test which currently is expected to fail (and does).
+# That's because vowel_count() wasn't designed to properly handle non-English vowels.
 @pytest.mark.xfail
 def test_with_unicode():
     """Test whether vowel__count properly handles non-English vowels"""

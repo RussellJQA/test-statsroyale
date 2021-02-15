@@ -1,6 +1,7 @@
 from __future__ import annotations
 
-import requests
+# pip installed
+import requests  # installed with webdriver_manager
 
 from royale.models.card import Card
 

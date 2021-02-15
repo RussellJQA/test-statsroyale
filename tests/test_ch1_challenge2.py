@@ -1,5 +1,7 @@
-import pytest
 import string
+
+# pip installed
+import pytest  # installed with webdriver_manager
 """ CHALLENGE 2: Write a new function that takes a string
 (e.g., "A cow jumped over the moon")
 and returns both the shortest and longest words within it.

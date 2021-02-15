@@ -5,8 +5,11 @@ This module contains shared fixtures.
 import json
 from pathlib import Path
 
-import pytest
-import selenium.webdriver
+# pip installed
+import pytest  # installed with webdriver_manager
+from selenium import webdriver
+from webdriver_manager.chrome import ChromeDriverManager
+from webdriver_manager.firefox import GeckoDriverManager
 
 
 # scope="session" means "Run fixture 1x per session"
@@ -33,7 +36,7 @@ def config(scope="session"):
 # scope="function" [the default] means "Run fixture 1x for each test case" )"
 @pytest.fixture
 def browser(config):
-    """Yield WebDriver instance with the specified configuattion"""
+    """Yield WebDriver instance with the specified configuration"""
 
     # Setup
     #   This section known as Arrange (in the Arrange-Act-Assert paradigm)
@@ -41,10 +44,10 @@ def browser(config):
 
     # Initialize the WebDriver instance
     if config["browser"] == "Chrome":
-        b = selenium.webdriver.Chrome()
+        b = webdriver.Chrome(ChromeDriverManager().install())
 
     elif config["browser"] == "Firefox":
-        b = selenium.webdriver.Firefox()
+        b = webdriver.Firefox(executable_path=GeckoDriverManager().install())
 
     else:
         raise Exception(f'Browser "{config["browser"]}" is not supported')

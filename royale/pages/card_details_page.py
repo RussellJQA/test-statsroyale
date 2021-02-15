@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+# pip installed
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 

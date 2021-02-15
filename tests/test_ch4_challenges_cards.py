@@ -1,4 +1,5 @@
-import pytest
+# pip installed
+import pytest  # installed with webdriver_manager
 import pytest_check as check
 
 from royale.pages.cards_page import CardsPage
@@ -15,7 +16,7 @@ cards.sort(key=lambda card_element: (card_element.arena, card_element.id))
 #   2. How would you call it in a test?
 #       ANSWER: As done below.
 #   3. Use a List Comprehension or other means.
-#       ANSWER: I used a genrator
+#       ANSWER: I used a generator
 
 
 @pytest.mark.flaky(reruns=2, reruns_delay=5)
@@ -56,4 +57,4 @@ def test_card_by_name_is_displayed(browser, card_name):
 #       Building == tid_card_type_building
 #       Spell == tid_card_type_spell
 #       Troop == tid_card_type_character
-# See class Card in royale.models.card
+# This is implemented in class Card in royale.models.card
